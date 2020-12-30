@@ -1,0 +1,24 @@
+#ifndef __TASK_H
+#define __TASK_H
+#include "stm32f4xx.h"
+#include "tim2.h"
+#include "PID.h"
+#include "motor.h"
+#include "JY901.h"
+#include "key.h"
+void task_frequency_control_main_loop(void);
+void task_1000Hz(void);
+void task_500Hz(void);
+void task_200Hz(void);
+void task_100Hz(void);
+void task_50Hz(void);
+void task_20Hz(void);
+void task_10Hz(void);
+void task_5Hz(void);
+void task_2Hz(void);
+void task_1Hz(void);
+void angle_adjust(void);
+void speed_adjust(void);
+void pressPlatformControl(int);
+void motorReset();
+#endif
