@@ -39,7 +39,7 @@ void speed_adjust()
 //	u8 Speed[8] = {0x01, 0x06, 0x00, 0x42, 0x01, 0x6E, 0xA9, 0xA2};
 //	RS485_Send_Data(Speed, 8);
 //	setMotorSpeed(1000, 1000);
-	setMotorDistance(900);
+	setMotorDistance(60,60);
 }
 
 //G½Óin2£¬H½Óin1

@@ -52,13 +52,13 @@ void setMotorSpeed(uint16_t speed_l, uint16_t speed_r)
 	RS485_Send_Data(Speed_R, 8);
 }
 
-void setMotorDistance(uint16_t dis)
+void setMotorDistance(uint16_t disLeft, uint16_t disRight)
 {
 	uint8_t highCRC,lowCRC;
-	distanceRaw[14] = dis&0xFF;
-	distanceRaw[13] = (dis>>8)&0xFF;
-	distance[14] = dis&0xFF;
-	distance[13] = (dis>>8)&0xFF;	
+	distanceRaw[14] = disLeft&0xFF;
+	distanceRaw[13] = (disLeft>>8)&0xFF;
+	distance[14] = disLeft&0xFF;
+	distance[13] = (disLeft>>8)&0xFF;	
 	highCRC = CRC16_H(distanceRaw, 15);
 	lowCRC = CRC16_L(distanceRaw, 15);
 	distance[16] = highCRC;
