@@ -5,33 +5,34 @@ int pressPlatformStatu = 2;
 int motorResetFlag = 1;
 int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
 void framework() {
-	if(1) {//开关按下，开始执行流程
-		//无刷电机复位
-		if (motorResetFlag) {
-			motorReset();
-		} else {
-			return;
-		}
-		//平台控制
-		if (pressPlatformDownFlag) {
-			pressPlatformStatu = 2;
-		}
-		//电磁铁控制
-		if (magnetFlag) {
-			GPIO_SetBits(GPIOH,GPIO_Pin_2);
-		}
-		
-		//无刷电机控制	
-//		setMotorDistance(900);
-		
-		//滚筒控制？
-		
-		//平台控制
-//		if (pressPlatformUpFlag) {
-//			pressPlatformStatu = 1;
+	setMotorDistance(-60,-60);
+//	if(1) {//开关按下，开始执行流程
+//		//无刷电机复位
+//		if (motorResetFlag) {
+//			motorReset();
+//		} else {
+//			return;
 //		}
-	} else {
-	}
+//		//平台控制
+//		if (pressPlatformDownFlag) {
+//			pressPlatformStatu = 2;
+//		}
+//		//电磁铁控制
+//		if (magnetFlag) {
+//			GPIO_SetBits(GPIOH,GPIO_Pin_2);
+//		}
+//		
+//		//无刷电机控制	
+////		setMotorDistance(900);
+//		
+//		//滚筒控制？
+//		
+//		//平台控制
+////		if (pressPlatformUpFlag) {
+////			pressPlatformStatu = 1;
+////		}
+//	} else {
+//	}
 }
 
 void speed_adjust()
@@ -77,7 +78,7 @@ void pressPlatformControl(int mode) {
 
 
 
-
+//黄色线v，黑色线u
 
 void motorReset() {
 	//让无刷电机转回初始位置
