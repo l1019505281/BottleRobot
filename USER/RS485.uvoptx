@@ -81,61 +81,46 @@
       <Books>
         <Book>
           <Number>0</Number>
-          <Title>MCBSTM32F400 Quick Start Guide (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/MCBSTM32F400_QSG.pdf</Path>
+          <Title>Getting Started (STM32F4-Discovery)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00037368.pdf</Path>
         </Book>
         <Book>
           <Number>1</Number>
-          <Title>User Manual (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f200.chm</Path>
+          <Title>User Manual (STM32F4-Discovery)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00039084.pdf</Path>
         </Book>
         <Book>
           <Number>2</Number>
-          <Title>Schematics V1.1 (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f400-schematics.pdf</Path>
+          <Title>User Manual (MCBSTM32F400)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f200.chm</Path>
         </Book>
         <Book>
           <Number>3</Number>
-          <Title>Schematics V1.2 (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f400-schematics_V1.2.pdf</Path>
+          <Title>Schematics (MCBSTM32F400)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f400-schematics.pdf</Path>
         </Book>
         <Book>
           <Number>4</Number>
-          <Title>STM32F4-Discovery Quick Start Guide (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/32F4-DISCOVERY_QSG.pdf</Path>
+          <Title>Bill of Materials (STM32F4-Discovery)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_bom.zip</Path>
         </Book>
         <Book>
           <Number>5</Number>
-          <Title>Getting Started (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00037368.pdf</Path>
+          <Title>Gerber Files (STM32F4-Discovery)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_gerber.zip</Path>
         </Book>
         <Book>
           <Number>6</Number>
-          <Title>User Manual (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00039084.pdf</Path>
+          <Title>Schematics (STM32F4-Discovery)</Title>
+          <Path>D:\KIEL\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_sch.zip</Path>
         </Book>
         <Book>
           <Number>7</Number>
-          <Title>Bill of Materials (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_bom.zip</Path>
-        </Book>
-        <Book>
-          <Number>8</Number>
-          <Title>Gerber Files (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_gerber.zip</Path>
-        </Book>
-        <Book>
-          <Number>9</Number>
-          <Title>Schematics (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_sch.zip</Path>
-        </Book>
-        <Book>
-          <Number>10</Number>
           <Title>MCBSTM32F400 Evaluation Board Web Page (MCBSTM32F400)</Title>
           <Path>http://www.keil.com/mcbstm32f400/</Path>
         </Book>
         <Book>
-          <Number>11</Number>
+          <Number>8</Number>
           <Title>STM32F4-Discovery Web Page (STM32F4-Discovery)</Title>
           <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF252419</Path>
         </Book>
@@ -199,7 +184,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U49FF6B064966534936160887 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN2 -FF0STM32F40xxx_41xxx_OPT.FLM -FS01FFFC000 -FL04 -FP0($$Device:STM32F407ZG$CMSIS/Flash/STM32F40xxx_41xxx_OPT.FLM) -FF1STM32F4xx_1024.FLM -FS18000000 -FL1100000 -FP1($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_1024.FLM)</Name>
+          <Name>-U303030303030303030303031 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$Flash\STM32F4xx_1024.FLM) -FF1STM32F40xxx_41xxx_OPT -FS11FFFC000 -FL14 -FP1($$Device:STM32F407ZG$Flash\STM32F40xxx_41xxx_OPT.FLM) -FF2STM32F4xx_OTP -FS21FFF7800 -FL2210 -FP2($$Device:STM32F407ZG$Flash\STM32F4xx_OTP.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>

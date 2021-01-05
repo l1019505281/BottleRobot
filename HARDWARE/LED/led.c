@@ -21,15 +21,38 @@ void LED_Init(void)
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD|RCC_AHB1Periph_GPIOH, ENABLE);//使能GPIOD时钟
 
   //GPIOF9,F10初始化设置
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;//12为1按压平台下降，13为1按压平台上升
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;//电动滚筒
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//推挽输出
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
   GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化
 	GPIO_ResetBits(GPIOD,GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-//	GPIO_SetBits(GPIOD,GPIO_Pin_9 | GPIO_Pin_10);//GPIOF9,F10设置高，灯灭
+	
+	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_11 | GPIO_Pin_10;//
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//推挽输出
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
+  GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化
+	GPIO_ResetBits(GPIOH,GPIO_Pin_12 | GPIO_Pin_10 | GPIO_Pin_11 );
+	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;//     4个为底部电机信号
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//推挽输出
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
+  GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化
+	GPIO_ResetBits(GPIOI,GPIO_Pin_0);                                    
 
+GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_0;//1为底部第一个限位开关，0为底部第二个限位开关
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//推挽输出
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
+  GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化
+	GPIO_ResetBits(GPIOF,GPIO_Pin_1 | GPIO_Pin_0);
 	//电磁铁接口为PinH2
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5;//电磁铁
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;//普通输出模式
