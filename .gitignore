@@ -1,6 +1,7 @@
 OBJ/*
 *.uvguix.*
-
+*.uvoptx
+*.uvprojx
 # Prerequisites
 *.d
 
