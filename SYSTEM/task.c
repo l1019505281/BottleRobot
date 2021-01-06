@@ -6,41 +6,33 @@ int motorResetFlag = 1;
 int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
 void framework() {
 	setMotorDistance(-60,-60);
-//	if(1) {//开关按下，开始执行流程
-//		//无刷电机复位
-//		if (motorResetFlag) {
-//			motorReset();
-//		} else {
-//			return;
+	if(1) {//开关按下，开始执行流程
+		//无刷电机复位
+		if (motorResetFlag) {
+			motorReset();
+		} else {
+			return;
+		}
+		//平台控制
+		if (pressPlatformDownFlag) {
+			pressPlatformStatu = 2;
+		}
+		//电磁铁控制
+		if (magnetFlag) {
+			GPIO_SetBits(GPIOH,GPIO_Pin_2);
+		}
+		
+		//无刷电机控制	
+//		setMotorDistance(900);
+		
+		//滚筒控制？
+		
+		//平台控制
+//		if (pressPlatformUpFlag) {
+//			pressPlatformStatu = 1;
 //		}
-//		//平台控制
-//		if (pressPlatformDownFlag) {
-//			pressPlatformStatu = 2;
-//		}
-//		//电磁铁控制
-//		if (magnetFlag) {
-//			GPIO_SetBits(GPIOH,GPIO_Pin_2);
-//		}
-//		
-//		//无刷电机控制	
-////		setMotorDistance(900);
-//		
-//		//滚筒控制？
-//		
-//		//平台控制
-////		if (pressPlatformUpFlag) {
-////			pressPlatformStatu = 1;
-////		}
-//	} else {
-//	}
-}
-
-void speed_adjust()
-{
-//	u8 Speed[8] = {0x01, 0x06, 0x00, 0x42, 0x01, 0x6E, 0xA9, 0xA2};
-//	RS485_Send_Data(Speed, 8);
-//	setMotorSpeed(1000, 1000);
-	setMotorDistance(60,60);
+	} else {
+	}
 }
 
 //G接in2，H接in1

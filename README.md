@@ -1,6 +1,6 @@
 # BottleRobot
 上传代码
-git add . 添加
+git add . 
 git commit -m "注释"
 git push
 

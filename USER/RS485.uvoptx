@@ -216,32 +216,16 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>42</LineNumber>
+          <LineNumber>61</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220616</Address>
+          <Address>134219772</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\涓婅璇句欢\寤舵瘯\SYSTEM\task.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>54</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220674</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\涓婅璇句欢\寤舵瘯\SYSTEM\task.c</Filename>
+          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\HARDWARE\motor\motor.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -251,6 +235,11 @@
           <count>0</count>
           <WinNumber>1</WinNumber>
           <ItemText>i</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>distance</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
