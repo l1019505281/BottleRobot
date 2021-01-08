@@ -19,6 +19,8 @@ u8 distanceLeft[17] = {0x02, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x0
 	
 u8 distanceRawRight[15] = {0x01, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 u8 distanceRight[17] = {0x01, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+	
+u8 finaDistance[34] = {0x01, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 //01 10 00 44 00 04 08 13 88 00 00
 void setMotorPWM(uint16_t speed_l, uint16_t speed_r)
 {
@@ -70,27 +72,49 @@ void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 	distanceLeft[13] = (disLeft>>8)&0xFF;	
 	distanceLeft[12] = (disLeft>>16)&0xFF;
 	distanceLeft[11] = (disLeft>>24)&0xFF;
+	
+
+
 	highCRC = CRC16_H(distanceRawLeft, 15);
 	lowCRC = CRC16_L(distanceRawLeft, 15);
 	distanceLeft[16] = highCRC;
 	distanceLeft[15] = lowCRC;
-	RS485_Send_Data(distanceLeft, 17);
+
+	finaDistance[16] = highCRC;
+	finaDistance[15] = lowCRC;
+
 	
-	distanceRawRight[14] = disLeft&0xFF;
-	distanceRawRight[13] = (disLeft>>8)&0xFF;
-	distanceRawRight[12] = (disLeft>>16)&0xFF;
-	distanceRawRight[11] = (disLeft>>24)&0xFF;
-	distanceRight[14] = disLeft&0xFF;
-	distanceRight[13] = (disLeft>>8)&0xFF;	
-	distanceRight[12] = (disLeft>>16)&0xFF;
-	distanceRight[11] = (disLeft>>24)&0xFF;
+	distanceRawRight[14] = disRight&0xFF;
+	distanceRawRight[13] = (disRight>>8)&0xFF;
+	distanceRawRight[12] = (disRight>>16)&0xFF;
+	distanceRawRight[11] = (disRight>>24)&0xFF;
+	distanceRight[14] = disRight&0xFF;
+	distanceRight[13] = (disRight>>8)&0xFF;	
+	distanceRight[12] = (disRight>>16)&0xFF;
+	distanceRight[11] = (disRight>>24)&0xFF;
 	highCRC = CRC16_H(distanceRawRight, 15);
 	lowCRC = CRC16_L(distanceRawRight, 15);
 	distanceRight[16] = highCRC;
 	distanceRight[15] = lowCRC;
-	delay_ms(15);
+
+	finaDistance[33] = highCRC;
+	finaDistance[32] = lowCRC;
+
+	RS485_Send_Data(distanceLeft, 17);
+	delay_ms(30);
 	RS485_Send_Data(distanceRight, 17);
-	
+
+
+	finaDistance[14] = disLeft&0xFF;
+	finaDistance[13] = (disLeft>>8)&0xFF;
+	finaDistance[12] = (disLeft>>16)&0xFF;
+	finaDistance[11] = (disLeft>>24)&0xFF;
+	finaDistance[31] = disLeft&0xFF;
+	finaDistance[30] = (disLeft>>8)&0xFF;
+	finaDistance[29] = (disLeft>>16)&0xFF;
+	finaDistance[28] = (disLeft>>24)&0xFF;
+
+//	RS485_Send_Data(finaDistance, 34);
 }
 
 

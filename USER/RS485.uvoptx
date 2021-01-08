@@ -199,7 +199,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U303030303030303030303031 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$Flash\STM32F4xx_1024.FLM) -FF1STM32F40xxx_41xxx_OPT -FS11FFFC000 -FL14 -FP1($$Device:STM32F407ZG$Flash\STM32F40xxx_41xxx_OPT.FLM) -FF2STM32F4xx_OTP -FS21FFF7800 -FL2210 -FP2($$Device:STM32F407ZG$Flash\STM32F4xx_OTP.FLM)</Name>
+          <Name>-U303030303030303030303031 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F40xxx_41xxx_OPT.FLM -FS01FFFC000 -FL04 -FP0($$Device:STM32F407ZG$CMSIS/Flash/STM32F40xxx_41xxx_OPT.FLM) -FF1STM32F4xx_1024.FLM -FS18000000 -FL1100000 -FP1($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_1024.FLM) -FF2STM32F4xx_OTP.FLM -FS21FFF7800 -FL2210 -FP2($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_OTP.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -216,18 +216,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>61</LineNumber>
+          <LineNumber>24</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134219772</Address>
+          <Address>134221014</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\HARDWARE\motor\motor.c</Filename>
+          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\SYSTEM\task.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\RS485\../SYSTEM/task.c\24</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>30</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221046</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\SYSTEM\task.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\RS485\../SYSTEM/task.c\30</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -240,6 +256,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>distance</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>finaDistance</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

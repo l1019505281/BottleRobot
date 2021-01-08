@@ -5,68 +5,107 @@ int pressPlatformStatu = 2;
 int motorResetFlag = 1;
 int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
 void framework() {
-	GPIO_SetBits(GPIOH,GPIO_Pin_2);
-
-	//左滚筒逆时针  ,右滚筒顺时针
-	GPIO_SetBits(GPIOD,GPIO_Pin_13);               //高电平接通        
-	GPIO_ResetBits(GPIOD,GPIO_Pin_12);                       //继电器依次接左电机第一个，第二个，右电机第一个第二个为在第一个端口，第二个端口接地
-	GPIO_ResetBits(GPIOD,GPIO_Pin_15);                  //低电平断开，悬空
-	GPIO_SetBits(GPIOD,GPIO_Pin_14);                 //IO口依次接in1,in2,in3,in4           
-	//第一个信号端口有输入为逆时针
-
-	//第一个电机开始运转
-	GPIO_SetBits(GPIOI,GPIO_Pin_0);
-	GPIO_ResetBits(GPIOH,GPIO_Pin_10);                      
-	if (GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_1))               //触碰第一个行程开关
-		{
-			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
-			GPIO_ResetBits(GPIOH,GPIO_Pin_10);                     //第一个电机停止
-
-			GPIO_SetBits(GPIOH,GPIO_Pin_11);
-			GPIO_ResetBits(GPIOH,GPIO_Pin_12);                //第二个电机运转
-			//第二个电机触碰到限位开关
-			if(GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_0))         
-				{
-					GPIO_ResetBits(GPIOH,GPIO_Pin_11);
-					GPIO_ResetBits(GPIOH,GPIO_Pin_12);
-				}
-		} 
-	 else
-		{ 
-			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
-			GPIO_ResetBits(GPIOH,GPIO_Pin_10);
-			GPIO_ResetBits(GPIOH,GPIO_Pin_11);
-			GPIO_ResetBits(GPIOH,GPIO_Pin_12);
-		}
-}
-			 
-//	if(1) {//开关按下，开始执行流程
-//		//无刷电机复位
-//		if (motorResetFlag) {
-//			motorReset();
-//		} else {
-//			return;
-//		}
-//		//平台控制
-//		if (pressPlatformDownFlag) {
-//			pressPlatformStatu = 2;
-//		}
-//		//电磁铁控制
+	int but = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
+	if (but) {//开关按下，开始执行流程
+		//无刷电机复位
+		
+		//平台控制
+		setMotorDistance(-223,-223);
+		//电磁铁控制
 //		if (magnetFlag) {
 //			GPIO_SetBits(GPIOH,GPIO_Pin_2);
 //		}
-//		
-//		//无刷电机控制	
-////		setMotorDistance(900);
-//		
-//		//滚筒控制？
-//		
-//		//平台控制
-////		if (pressPlatformUpFlag) {
-////			pressPlatformStatu = 1;
-////		}
-//	} else {
-//	}
+		
+		GPIO_SetBits(GPIOH,GPIO_Pin_2);
+		//左滚筒逆时针  ,右滚筒顺时针
+		GPIO_SetBits(GPIOD,GPIO_Pin_15);          // E    //高电平接通        
+		GPIO_ResetBits(GPIOD,GPIO_Pin_14);       //  F             //继电器依次接左电机第一个，第二个，右电机第一个第二个为在第一个端口，第二个端口接地
+		if (GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_13))
+		{ 
+			GPIO_SetBits(GPIOD,GPIO_Pin_14);
+			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
+		}
+   
+		if (GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_12))
+		{ 
+			GPIO_SetBits(GPIOD,GPIO_Pin_14);
+			GPIO_SetBits(GPIOD,GPIO_Pin_15);
+		}
+   
+//   GPIO_ResetBits(GPIOD,GPIO_Pin_13);       //  G         //低电平断开，悬空
+//  GPIO_SetBits(GPIOD,GPIO_Pin_12);          // H      //IO口依次接in1,in2,in3,in4           
+ //第一个信号端口有输入为逆时针
+  
+ 
+		//第一个电机开始运转
+//		GPIO_SetBits(GPIOI,GPIO_Pin_0);                   //A
+//		GPIO_ResetBits(GPIOH,GPIO_Pin_12);                  //B  
+//		GPIO_ResetBits(GPIOH,GPIO_Pin_11);
+//		GPIO_ResetBits(GPIOH,GPIO_Pin_10);   
+//		if (GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_1))        //I1       //触碰第一个行程开关
+//		{
+//			GPIO_ResetBits(GPIOI,GPIO_Pin_0); 
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_12);                     //第一个电机停止
+//    
+//			GPIO_SetBits(GPIOH,GPIO_Pin_11);                //C
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_10);             //D   //第二个电机运转
+//    
+//    if (GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_0))     //I2    //第二个电机触碰到限位开关
+//     {
+//       GPIO_ResetBits(GPIOH,GPIO_Pin_11);
+//       GPIO_ResetBits(GPIOH,GPIO_Pin_12);
+//     }
+//  else
+//     { 
+//			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
+//     GPIO_ResetBits(GPIOH,GPIO_Pin_10);
+//     GPIO_ResetBits(GPIOH,GPIO_Pin_11);
+//     GPIO_ResetBits(GPIOH,GPIO_Pin_12);
+//    }
+//}
+	} else {
+		setMotorDistance(0,0);
+		GPIO_ResetBits(GPIOH,GPIO_Pin_2);
+		GPIO_SetBits(GPIOD,GPIO_Pin_14);
+		GPIO_SetBits(GPIOD,GPIO_Pin_15);
+	}
+	
+
+}
+			 
+//		GPIO_SetBits(GPIOH,GPIO_Pin_2);
+
+//		//左滚筒逆时针  ,右滚筒顺时针
+//		GPIO_SetBits(GPIOD,GPIO_Pin_13);               //高电平接通        
+//		GPIO_ResetBits(GPIOD,GPIO_Pin_12);                       //继电器依次接左电机第一个，第二个，右电机第一个第二个为在第一个端口，第二个端口接地
+//		GPIO_ResetBits(GPIOD,GPIO_Pin_15);                  //低电平断开，悬空
+//		GPIO_SetBits(GPIOD,GPIO_Pin_14);                 //IO口依次接in1,in2,in3,in4           
+//		//第一个信号端口有输入为逆时针
+
+//		//第一个电机开始运转
+//		GPIO_SetBits(GPIOI,GPIO_Pin_0);
+//		GPIO_ResetBits(GPIOH,GPIO_Pin_10);                      
+//		if (GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_1))               //触碰第一个行程开关
+//		{
+//			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_10);                     //第一个电机停止
+
+//			GPIO_SetBits(GPIOH,GPIO_Pin_11);
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_12);                //第二个电机运转
+//			//第二个电机触碰到限位开关
+//			if(GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_0))         
+//				{
+//					GPIO_ResetBits(GPIOH,GPIO_Pin_11);
+//					GPIO_ResetBits(GPIOH,GPIO_Pin_12);
+//				}
+//		} 
+//	 else
+//		{ 
+//			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_10);
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_11);
+//			GPIO_ResetBits(GPIOH,GPIO_Pin_12);
+//		}
 
 
 
@@ -167,13 +206,13 @@ void task_5Hz(void)
 
 void task_2Hz(void)
 {
-	framework();
+	
 }
 
 
 void task_1Hz(void)
 {
-		
+	framework();	
 }
 
 // 用于使任务按一定频率运行的循环
