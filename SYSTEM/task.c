@@ -10,28 +10,32 @@ void framework() {
 		//无刷电机复位
 		
 		//平台控制
+		//1个单位30度，1圈360度，5mm
 		setMotorDistance(-223,-223);
-		//电磁铁控制
-//		if (magnetFlag) {
-//			GPIO_SetBits(GPIOH,GPIO_Pin_2);
-//		}
 		
-		GPIO_SetBits(GPIOH,GPIO_Pin_2);
-		//左滚筒逆时针  ,右滚筒顺时针
-		GPIO_SetBits(GPIOD,GPIO_Pin_15);          // E    //高电平接通        
-		GPIO_ResetBits(GPIOD,GPIO_Pin_14);       //  F             //继电器依次接左电机第一个，第二个，右电机第一个第二个为在第一个端口，第二个端口接地
+		
+		//用来调滚筒正反转和停
 		if (GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_13))
 		{ 
 			GPIO_SetBits(GPIOD,GPIO_Pin_14);
 			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
 		}
-   
-		if (GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_12))
+		else if (GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_12))
 		{ 
+			//左滚筒逆时针  ,右滚筒顺时针
+			GPIO_SetBits(GPIOD,GPIO_Pin_15);          // E    //高电平接通        
+			GPIO_ResetBits(GPIOD,GPIO_Pin_14);       //  F             //继电器依次接左电机第一个，第二个，右电机第一个第二个为在第一个端口，第二个端口接地
+			GPIO_SetBits(GPIOH,GPIO_Pin_2);
+		}
+		else 
+		{
 			GPIO_SetBits(GPIOD,GPIO_Pin_14);
 			GPIO_SetBits(GPIOD,GPIO_Pin_15);
+			GPIO_ResetBits(GPIOH,GPIO_Pin_2);
 		}
-   
+		//上面用来调滚筒正反转和停
+		
+		//下面的机构
 //   GPIO_ResetBits(GPIOD,GPIO_Pin_13);       //  G         //低电平断开，悬空
 //  GPIO_SetBits(GPIOD,GPIO_Pin_12);          // H      //IO口依次接in1,in2,in3,in4           
  //第一个信号端口有输入为逆时针
@@ -63,6 +67,7 @@ void framework() {
 //     GPIO_ResetBits(GPIOH,GPIO_Pin_12);
 //    }
 //}
+			//下面的机构
 	} else {
 		setMotorDistance(0,0);
 		GPIO_ResetBits(GPIOH,GPIO_Pin_2);

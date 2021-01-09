@@ -53,7 +53,7 @@ void LED_Init(void)
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
   GPIO_Init(GPIOH, &GPIO_InitStructure);//初始化
-	GPIO_SetBits(GPIOH,GPIO_Pin_2);
+	GPIO_ResetBits(GPIOH,GPIO_Pin_2);
 }
 
 
