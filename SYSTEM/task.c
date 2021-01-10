@@ -4,14 +4,21 @@ extern struct TIM2_TASK_COUNTER TIM2_TASK_COUNTER_DATA;
 int pressPlatformStatu = 2;
 int motorResetFlag = 1;
 int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
+//如果要复位，则在这里设为1 ， 不需要则0
+int RESET_FLAG = 0;
+
 void framework() {
+	if (RESET_FLAG) {
+		motorReset();
+	}
+	//
 	int but = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
 	if (but) {//开关按下，开始执行流程
 		//无刷电机复位
 		
 		//平台控制
-		//1个单位30度，1圈360度，5mm
-		setMotorDistance(-223,-223);
+		//单位MM
+		setMotorDistance(-60,-60);
 		
 		
 		//用来调滚筒正反转和停
@@ -61,7 +68,7 @@ void framework() {
 //     }
 //  else
 //     { 
-//			GPIO_ResetBits(GPIOI,GPIO_Pin_0);
+//		 GPIO_ResetBits(GPIOI,GPIO_Pin_0);
 //     GPIO_ResetBits(GPIOH,GPIO_Pin_10);
 //     GPIO_ResetBits(GPIOH,GPIO_Pin_11);
 //     GPIO_ResetBits(GPIOH,GPIO_Pin_12);
@@ -69,7 +76,9 @@ void framework() {
 //}
 			//下面的机构
 	} else {
+		if (!RESET_FLAG) {
 		setMotorDistance(0,0);
+		}
 		GPIO_ResetBits(GPIOH,GPIO_Pin_2);
 		GPIO_SetBits(GPIOD,GPIO_Pin_14);
 		GPIO_SetBits(GPIOD,GPIO_Pin_15);
@@ -151,15 +160,18 @@ void framework() {
 
 ////黄色线v，黑色线u
 
-//void motorReset() {
-//	//让无刷电机转回初始位置
-//	setMotorSpeed(500,500);
-//	//当丝杆抵到复位限位开关时
-//	if (GPIO_ReadInputDataBit(GPIOH,GPIO_Pin_12)) {
-//		setMotorSpeed(0,0);
-//		motorResetFlag = 0;
-//	}
-//}
+void motorReset() {
+	
+	//当丝杆抵到复位限位开关时
+	int PA1 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1), PA2 = 0;
+	if (PA1||PA2) {
+		setMotorStop();
+		motorResetFlag = 0;
+	} else {
+	//让无刷电机转回初始位置	
+		setMotorUp();
+	}
+}
 
 void task_1000Hz(void)
 {

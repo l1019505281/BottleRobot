@@ -20,12 +20,6 @@ void KEY_Init(void)
 	GPIO_InitTypeDef  GPIO_InitStructure;
 
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOH|RCC_AHB1Periph_GPIOE|RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOD|RCC_AHB1Periph_GPIOF, ENABLE);//使能GPIOH,GPIOE时钟
- 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12|GPIO_Pin_11|GPIO_Pin_10; //10总开关,11为上面的限位开关，12为无刷电机的复位开关。
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
-  GPIO_Init(GPIOH, &GPIO_InitStructure);//初始化
 	
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12|GPIO_Pin_13; //10总开关,11为上面的限位开关，12为无刷电机的复位开关。
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
@@ -39,7 +33,7 @@ void KEY_Init(void)
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//下拉
   GPIO_Init(GPIOF, &GPIO_InitStructure);//初始化	
 	
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;//WK_UP对应引脚PA0
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1;//PA0总开关、PA1和PA2是无刷复位开关
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN ;//下拉
   GPIO_Init(GPIOA, &GPIO_InitStructure);//初始化GPIOA0
  

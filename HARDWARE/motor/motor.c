@@ -2,15 +2,14 @@
 #include "sys.h"
 #include "motor.h"
 
-u8 PWM_R_raw[6] = {0x01, 0x06, 0x00, 0x42, 0x00, 0x00};
-u8 PWM_L_raw[6] = {0x02, 0x06, 0x00, 0x42, 0x00, 0x00};
+//02 06 00 43 00 C8 79 BB 
+//01 06 00 43 00 C8 79 88 
 
-u8 PWM_R[8] = {0x01, 0x06, 0x00, 0x42, 0x00, 0x00, 0x00, 0x00};
-u8 PWM_L[8] = {0x02, 0x06, 0x00, 0x42, 0x00, 0x00, 0x00, 0x00};
+//01 06 00 40 00 00 88 1E 
+//02 06 00 40 00 00 88 2D 
 
 u8 Speed_R_raw[6] = {0x01, 0x06, 0x00, 0x43, 0x00, 0x00};
 u8 Speed_L_raw[6] = {0x02, 0x06, 0x00, 0x43, 0x00, 0x00};
-
 u8 Speed_R[8] = {0x01, 0x06, 0x00, 0x43, 0x00, 0x00, 0x00, 0x00};
 u8 Speed_L[8] = {0x02, 0x06, 0x00, 0x43, 0x00, 0x00, 0x00, 0x00};
 
@@ -22,11 +21,25 @@ u8 distanceRight[17] = {0x01, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x
 	
 u8 finaDistance[34] = {0x01, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x00, 0x44, 0x00, 0x04, 0x08, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 //01 10 00 44 00 04 08 13 88 00 00
-void setMotorPWM(uint16_t speed_l, uint16_t speed_r)
+
+void setMotorUp()
 {
-	PWM_L_raw[5] = speed_l&0xFF;
-	PWM_L_raw[4] = (speed_l>>8)&0xFF;
+	u8 upSpeedRight[8] = {0x01, 0x06, 0x00, 0x43, 0x00, 0xC8, 0x79, 0x88};
+	u8 upSpeedLeft[8] = {0x02, 0x06, 0x00, 0x43, 0x00, 0xC8, 0x79, 0xBB};
+		
+	RS485_Send_Data(upSpeedLeft,8);
+	delay_ms(30);
+	RS485_Send_Data(upSpeedRight,8);
 }
+
+void setMotorStop()
+{
+	u8 upSpeedRight[8] = {0x01, 0x06, 0x00, 0x40, 0x00, 0x00, 0x88, 0x1E};
+	u8 upSpeedLeft[8] = { 0x02, 0x06, 0x00, 0x40, 0x00, 0x00, 0x88, 0x2D};
+		
+	RS485_Send_Data(upSpeedLeft,8);
+	delay_ms(30);
+	RS485_Send_Data(upSpeedRight,8);}
 
 void setMotorSpeed(uint16_t speed_l, uint16_t speed_r)
 {
@@ -56,14 +69,15 @@ void setMotorSpeed(uint16_t speed_l, uint16_t speed_r)
 	delay_ms(15);
 	RS485_Send_Data(Speed_R, 8);
 }
-//01 10 00 44 00 04 08 13 88 00 00 00 00 00 51 CE 67
-//01 10 00 44 00 04 08 01 F4 00 00 00 00 00 51 F3 75
 
-//01 10 00 44 00 04 08 01 F4 00 00 FF FF FF C4 72 CE
-// 一单位 30度 1 == 0.416mm
-void setMotorDistance(uint32_t disLeft, uint32_t disRight)
+//负数往下，正数网上
+void setMotorDistance(uint32_t disLeft_mm, uint32_t disRight_mm)
 {
+	//进行单位转换
+	uint32_t disLeft = -(int)(-disLeft_mm*2.4);
+	uint32_t disRight = -(int)(-disRight_mm*2.4);
 	uint8_t highCRC,lowCRC;
+		
 	distanceRawLeft[14] = disLeft&0xFF;
 	distanceRawLeft[13] = (disLeft>>8)&0xFF;
 	distanceRawLeft[12] = (disLeft>>16)&0xFF;
@@ -79,10 +93,6 @@ void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 	lowCRC = CRC16_L(distanceRawLeft, 15);
 	distanceLeft[16] = highCRC;
 	distanceLeft[15] = lowCRC;
-
-	finaDistance[16] = highCRC;
-	finaDistance[15] = lowCRC;
-
 	
 	distanceRawRight[14] = disRight&0xFF;
 	distanceRawRight[13] = (disRight>>8)&0xFF;
@@ -97,32 +107,23 @@ void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 	distanceRight[16] = highCRC;
 	distanceRight[15] = lowCRC;
 
-	finaDistance[33] = highCRC;
-	finaDistance[32] = lowCRC;
-
 	RS485_Send_Data(distanceLeft, 17);
 	delay_ms(30);
 	RS485_Send_Data(distanceRight, 17);
-
-
-	finaDistance[14] = disLeft&0xFF;
-	finaDistance[13] = (disLeft>>8)&0xFF;
-	finaDistance[12] = (disLeft>>16)&0xFF;
-	finaDistance[11] = (disLeft>>24)&0xFF;
-	finaDistance[31] = disLeft&0xFF;
-	finaDistance[30] = (disLeft>>8)&0xFF;
-	finaDistance[29] = (disLeft>>16)&0xFF;
-	finaDistance[28] = (disLeft>>24)&0xFF;
-
-//	RS485_Send_Data(finaDistance, 34);
+}
+//只有正数
+void setDistanByBottleDiameter(uint32_t BottleDiameter) {
+	
+	setMotorDistance(-BottleDiameter, -BottleDiameter);
 }
 
+//01 10 00 44 00 04 08 13 88 00 00 00 00 00 51 CE 67
+//01 10 00 44 00 04 08 01 F4 00 00 00 00 00 51 F3 75
 
-//void setMotorDistance(uint32_t disLeft_mm, uint32_t disRight_mm)
+//01 10 00 44 00 04 08 01 F4 00 00 FF FF FF C4 72 CE
+// 一单位 30度 1 == 0.416mm
+//void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 //{
-//	//进行单位转换
-//	uint32_t disLeft = disLeft_mm*2.4;
-//	uint32_t disRight = disRight_mm*2.4;
 //	uint8_t highCRC,lowCRC;
 //	distanceRawLeft[14] = disLeft&0xFF;
 //	distanceRawLeft[13] = (disLeft>>8)&0xFF;
@@ -132,11 +133,17 @@ void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 //	distanceLeft[13] = (disLeft>>8)&0xFF;	
 //	distanceLeft[12] = (disLeft>>16)&0xFF;
 //	distanceLeft[11] = (disLeft>>24)&0xFF;
+//	
+
+
 //	highCRC = CRC16_H(distanceRawLeft, 15);
 //	lowCRC = CRC16_L(distanceRawLeft, 15);
 //	distanceLeft[16] = highCRC;
 //	distanceLeft[15] = lowCRC;
-//	RS485_Send_Data(distanceLeft, 17);
+
+//	finaDistance[16] = highCRC;
+//	finaDistance[15] = lowCRC;
+
 //	
 //	distanceRawRight[14] = disRight&0xFF;
 //	distanceRawRight[13] = (disRight>>8)&0xFF;
@@ -150,8 +157,24 @@ void setMotorDistance(uint32_t disLeft, uint32_t disRight)
 //	lowCRC = CRC16_L(distanceRawRight, 15);
 //	distanceRight[16] = highCRC;
 //	distanceRight[15] = lowCRC;
-//	delay_ms(15);
-//	RS485_Send_Data(distanceRight, 17);
-//	
-//}
 
+//	finaDistance[33] = highCRC;
+//	finaDistance[32] = lowCRC;
+//  //30 12
+//	RS485_Send_Data(distanceLeft, 17);
+//	delay_ms(30);
+//	//73 13
+//	RS485_Send_Data(distanceRight, 17);
+
+
+//	finaDistance[14] = disLeft&0xFF;
+//	finaDistance[13] = (disLeft>>8)&0xFF;
+//	finaDistance[12] = (disLeft>>16)&0xFF;
+//	finaDistance[11] = (disLeft>>24)&0xFF;
+//	finaDistance[31] = disLeft&0xFF;
+//	finaDistance[30] = (disLeft>>8)&0xFF;
+//	finaDistance[29] = (disLeft>>16)&0xFF;
+//	finaDistance[28] = (disLeft>>24)&0xFF;
+
+////	RS485_Send_Data(finaDistance, 34);
+//}
