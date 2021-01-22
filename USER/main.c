@@ -45,6 +45,7 @@ int main(void)
 	KEY_Init(); 				//按键初始化  
 	RS485_Init(6400);		//初始化RS485串口2	
 	tim2_TIM2_init();
+	uart6_init(6400);
 	task_frequency_control_main_loop();
 }
 

@@ -1,6 +1,7 @@
 #include "task.h"
 extern struct TIM2_TASK_COUNTER TIM2_TASK_COUNTER_DATA;
 
+u8 value;
 int pressPlatformStatu = 2;
 int motorResetFlag = 1;
 int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
@@ -8,17 +9,18 @@ int pressPlatformDownFlag = 1, pressPlatformUpFlag = 0, magnetFlag = 0;
 int RESET_FLAG = 0;
 
 void framework() {
+	int but = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
 	if (RESET_FLAG) {
 		motorReset();
 	}
 	//
-	int but = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
+	
 	if (but) {//开关按下，开始执行流程
 		//无刷电机复位
 		
 		//平台控制
 		//单位MM
-		setMotorDistance(-60,-60);
+		setMotorDistance(-value,-value);
 		
 		
 		//用来调滚筒正反转和停

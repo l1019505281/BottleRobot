@@ -20,5 +20,6 @@
 #define LED0 PFout(9)	// DS0
 #define LED1 PFout(10)	// DS1	 
 
-void LED_Init(void);//初始化		 				    
+void LED_Init(void);//初始化		
+void uart6_init(u32);
 #endif

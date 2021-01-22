@@ -81,61 +81,46 @@
       <Books>
         <Book>
           <Number>0</Number>
-          <Title>MCBSTM32F400 Quick Start Guide (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/MCBSTM32F400_QSG.pdf</Path>
+          <Title>Getting Started (STM32F4-Discovery)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00037368.pdf</Path>
         </Book>
         <Book>
           <Number>1</Number>
-          <Title>User Manual (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f200.chm</Path>
+          <Title>User Manual (STM32F4-Discovery)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00039084.pdf</Path>
         </Book>
         <Book>
           <Number>2</Number>
-          <Title>Schematics V1.1 (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f400-schematics.pdf</Path>
+          <Title>User Manual (MCBSTM32F400)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f200.chm</Path>
         </Book>
         <Book>
           <Number>3</Number>
-          <Title>Schematics V1.2 (MCBSTM32F400)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f400-schematics_V1.2.pdf</Path>
+          <Title>Schematics (MCBSTM32F400)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f400-schematics.pdf</Path>
         </Book>
         <Book>
           <Number>4</Number>
-          <Title>STM32F4-Discovery Quick Start Guide (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/32F4-DISCOVERY_QSG.pdf</Path>
+          <Title>Bill of Materials (STM32F4-Discovery)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_bom.zip</Path>
         </Book>
         <Book>
           <Number>5</Number>
-          <Title>Getting Started (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00037368.pdf</Path>
+          <Title>Gerber Files (STM32F4-Discovery)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_gerber.zip</Path>
         </Book>
         <Book>
           <Number>6</Number>
-          <Title>User Manual (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00039084.pdf</Path>
+          <Title>Schematics (STM32F4-Discovery)</Title>
+          <Path>D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_sch.zip</Path>
         </Book>
         <Book>
           <Number>7</Number>
-          <Title>Bill of Materials (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_bom.zip</Path>
-        </Book>
-        <Book>
-          <Number>8</Number>
-          <Title>Gerber Files (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_gerber.zip</Path>
-        </Book>
-        <Book>
-          <Number>9</Number>
-          <Title>Schematics (STM32F4-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_sch.zip</Path>
-        </Book>
-        <Book>
-          <Number>10</Number>
           <Title>MCBSTM32F400 Evaluation Board Web Page (MCBSTM32F400)</Title>
           <Path>http://www.keil.com/mcbstm32f400/</Path>
         </Book>
         <Book>
-          <Number>11</Number>
+          <Number>8</Number>
           <Title>STM32F4-Discovery Web Page (STM32F4-Discovery)</Title>
           <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF252419</Path>
         </Book>
@@ -199,7 +184,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U303030303030303030303031 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F40xxx_41xxx_OPT.FLM -FS01FFFC000 -FL04 -FP0($$Device:STM32F407ZG$CMSIS/Flash/STM32F40xxx_41xxx_OPT.FLM) -FF1STM32F4xx_1024.FLM -FS18000000 -FL1100000 -FP1($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_1024.FLM) -FF2STM32F4xx_OTP.FLM -FS21FFF7800 -FL2210 -FP2($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_OTP.FLM)</Name>
+          <Name>-U303030303030303030303031 -I0 -O8398 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN3 -FF0STM32F40xxx_41xxx_OPT.FLM -FS01FFFC000 -FL04 -FP0($$Device:STM32F407ZG$Flash\STM32F40xxx_41xxx_OPT.FLM) -FF1STM32F4xx_1024.FLM -FS18000000 -FL1100000 -FP1($$Device:STM32F407ZG$Flash\STM32F4xx_1024.FLM) -FF2STM32F4xx_OTP.FLM -FS21FFF7800 -FL2210 -FP2($$Device:STM32F407ZG$Flash\STM32F4xx_OTP.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -216,32 +201,64 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>28</LineNumber>
+          <LineNumber>143</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134219738</Address>
+          <Address>134219500</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\HARDWARE\motor\motor.c</Filename>
+          <Filename>..\HARDWARE\LED\led.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>34</LineNumber>
+          <LineNumber>37</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134219758</Address>
+          <Address>134221594</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\涓婅璇句欢\Robot\BottleRobot\HARDWARE\motor\motor.c</Filename>
+          <Filename>..\SYSTEM\task.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>30</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221550</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\SYSTEM\task.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>18</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221510</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\SYSTEM\task.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -256,6 +273,16 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>distance</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Res</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>value</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
